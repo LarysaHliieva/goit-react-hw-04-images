@@ -9,13 +9,19 @@ const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ url, alt, onClose }) => {
   useEffect(() => {
-    document.addEventListener('keydown', handleClose);
+    const handleEscClose = e => {
+      if (e.code === 'Escape') {
+        onClose();
+      }
+    };
 
-    return () => document.removeEventListener('keydown', handleClose);
-  }, []);
+    document.addEventListener('keydown', handleEscClose);
+
+    return () => document.removeEventListener('keydown', handleEscClose);
+  }, [onClose]);
 
   const handleClose = e => {
-    if (e.currentTarget === e.target || e.code === 'Escape') {
+    if (e.currentTarget === e.target) {
       onClose();
     }
   };
