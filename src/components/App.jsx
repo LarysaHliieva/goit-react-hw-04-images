@@ -94,7 +94,7 @@ export const App = () => {
 
       {isNotFound && (
         <p className={styles.message}>
-          🙄 Sorry... Nothing was found for your request.
+          🙄 Sorry. Nothing was found for your request.
         </p>
       )}
     </div>
